@@ -1,0 +1,246 @@
+.page {
+  padding: 2rem 2.5rem;
+  max-width: 1100px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 0.2rem;
+  letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+  font-size: 0.82rem;
+  color: #94A3B8;
+  margin: 0;
+}
+
+.btnDelete {
+  padding: 0.5rem 1.1rem;
+  background: #EF4444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.btnDelete:hover { background: #DC2626; }
+.btnDelete:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Checkbox col ──────────────────────────────────────────────────────────── */
+
+.thCheck, .tdCheck {
+  padding: 0.875rem 0.75rem 0.875rem 1.25rem;
+  width: 40px;
+}
+
+.thCheck {
+  background-color: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #6366F1;
+}
+
+.trSelected {
+  background: #EEF2FF !important;
+}
+
+/* ── Status / errors ───────────────────────────────────────────────────────── */
+
+.statusText {
+  color: #64748B;
+  font-size: 0.9rem;
+}
+
+.errorBanner {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #DC2626;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Table ─────────────────────────────────────────────────────────────────── */
+
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  border: 1px solid #E2E8F0;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.th {
+  background-color: #F8FAFC;
+  padding: 0.875rem 1.25rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid #E2E8F0;
+  white-space: nowrap;
+}
+
+.tr {
+  border-bottom: 1px solid #F1F5F9;
+  transition: background-color 0.1s;
+}
+
+.tr:last-child {
+  border-bottom: none;
+}
+
+.tr:hover {
+  background-color: #EEF2FF;
+}
+
+.tdId {
+  padding: 0.875rem 1.25rem;
+  font-size: 0.8rem;
+  color: #94A3B8;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.td {
+  padding: 0.875rem 1.25rem;
+  font-size: 0.9rem;
+  color: #0F172A;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Video button ──────────────────────────────────────────────────────────── */
+
+.btnVideo {
+  background-color: #EEF2FF;
+  color: #6366F1;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.875rem;
+  font-size: 0.825rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btnVideo:hover {
+  background-color: #E0E7FF;
+}
+
+.noVideo {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  font-style: italic;
+}
+
+/* ── Video Modal ───────────────────────────────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.videoModal {
+  background: #0F172A;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3), 0 10px 10px -5px rgba(0,0,0,0.2);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.videoModalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.videoModalTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #F1F5F9;
+  margin: 0;
+}
+
+.videoModalSub {
+  font-size: 0.8rem;
+  color: #64748B;
+  margin: 0.2rem 0 0;
+}
+
+.btnClose {
+  background: rgba(255, 255, 255, 0.08);
+  color: #F1F5F9;
+  border: none;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.btnClose:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.videoEl {
+  width: 100%;
+  border-radius: 8px;
+  background: #000000;
+  aspect-ratio: 16 / 9;
+}

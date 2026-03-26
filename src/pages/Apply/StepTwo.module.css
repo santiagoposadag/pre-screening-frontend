@@ -1,0 +1,455 @@
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background-color: #F8FAFC;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+
+.header {
+  background-color: #0F172A;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  color: #F1F5F9;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.headerTitle {
+  background: #6366F1;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+}
+
+.candidateName {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* ── Main / Container ───────────────────────────────────────────────────────── */
+
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── Section card ───────────────────────────────────────────────────────────── */
+
+.section {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  border: 1px solid #E2E8F0;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.vacancyName {
+  color: #6366F1;
+}
+
+.sectionHeading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+
+/* ── Shared text helpers ────────────────────────────────────────────────────── */
+
+.statusText {
+  color: #64748B;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.errorText {
+  color: #EF4444;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ── Progress dots ──────────────────────────────────────────────────────────── */
+
+.questionCounter {
+  font-size: 14px;
+  color: #64748B;
+  margin: 0;
+}
+
+.progressDots {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #E2E8F0;
+  display: inline-block;
+  transition: background-color 0.2s;
+}
+
+.dotActive {
+  background-color: #6366F1;
+}
+
+/* ── Question card ──────────────────────────────────────────────────────────── */
+
+.questionCard {
+  border-left: 4px solid #6366F1;
+  padding: 20px;
+  background: #EEF2FF;
+  border-radius: 0 8px 8px 0;
+  font-size: 18px;
+  color: #0F172A;
+  line-height: 1.6;
+}
+
+/* ── Recorder area ──────────────────────────────────────────────────────────── */
+
+.recorderArea {
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.videoEl {
+  width: 100%;
+  border-radius: 8px;
+  background: #0F172A;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Recording badge ────────────────────────────────────────────────────────── */
+
+.recordingBadgeWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.recordingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  border-radius: 9999px;
+  background: #FEE2E2;
+  color: #DC2626;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ── Button row ─────────────────────────────────────────────────────────────── */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Base button reset */
+.btnRecord,
+.btnStop,
+.btnSkip,
+.btnSave,
+.btnReRecord,
+.btnSubmit,
+.btnBack {
+  border-radius: 8px;
+  padding: 0.55rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s, opacity 0.15s, border-color 0.15s;
+  line-height: 1.4;
+}
+
+/* Iniciar grabacion */
+.btnRecord {
+  background-color: #16A34A;
+  color: #ffffff;
+  border: none;
+}
+.btnRecord:hover {
+  background-color: #15803D;
+}
+
+/* Detener */
+.btnStop {
+  background-color: #DC2626;
+  color: #ffffff;
+  border: none;
+}
+.btnStop:hover {
+  background-color: #B91C1C;
+}
+
+/* Saltar pregunta */
+.btnSkip {
+  background-color: transparent;
+  color: #64748B;
+  border: 2px solid #E2E8F0;
+}
+.btnSkip:hover {
+  border-color: #94A3B8;
+  color: #374151;
+}
+
+/* Guardar y continuar */
+.btnSave {
+  background-color: #6366F1;
+  color: #ffffff;
+  border: none;
+}
+.btnSave:hover {
+  background-color: #4F46E5;
+}
+
+/* Volver a grabar */
+.btnReRecord {
+  background-color: transparent;
+  color: #6366F1;
+  border: 2px solid #6366F1;
+}
+.btnReRecord:hover {
+  background-color: #EEF2FF;
+}
+
+/* ── Question navigation row ────────────────────────────────────────────────── */
+
+.navRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid #F1F5F9;
+  gap: 1rem;
+}
+
+.btnNavPrev,
+.btnNavNext {
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s, opacity 0.15s, border-color 0.15s;
+}
+
+.btnNavPrev {
+  background-color: transparent;
+  color: #64748B;
+  border: 2px solid #E2E8F0;
+}
+.btnNavPrev:hover:not(:disabled) {
+  border-color: #94A3B8;
+  color: #374151;
+}
+.btnNavPrev:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btnNavNext {
+  background-color: #6366F1;
+  color: #ffffff;
+  border: none;
+}
+.btnNavNext:hover {
+  background-color: #4F46E5;
+}
+
+.btnApply {
+  border-radius: 8px;
+  padding: 0.6rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: #10B981;
+  color: #ffffff;
+  border: none;
+  transition: background-color 0.15s;
+}
+.btnApply:hover {
+  background-color: #059669;
+}
+
+/* ── Summary ────────────────────────────────────────────────────────────────── */
+
+.summaryList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.summaryItem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.summaryItem:last-child {
+  border-bottom: none;
+}
+
+.summaryQuestion {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ── Badges ─────────────────────────────────────────────────────────────────── */
+
+.badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badgeAnswered {
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.badgeSkipped {
+  background: #F1F5F9;
+  color: #64748B;
+}
+
+/* ── Summary actions ────────────────────────────────────────────────────────── */
+
+.summaryActions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Volver */
+.btnBack {
+  background-color: transparent;
+  color: #64748B;
+  border: 2px solid #E2E8F0;
+}
+.btnBack:hover {
+  border-color: #94A3B8;
+  color: #374151;
+}
+
+/* Enviar aplicacion */
+.btnSubmit {
+  background-color: #6366F1;
+  color: #ffffff;
+  border: none;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s, opacity 0.15s;
+  flex: 1;
+  min-width: 200px;
+}
+.btnSubmit:hover:not(:disabled) {
+  background-color: #4F46E5;
+}
+.btnSubmit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ── Submit error ───────────────────────────────────────────────────────────── */
+
+.submitError {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #DC2626;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin: 0;
+}
