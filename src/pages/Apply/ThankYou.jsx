@@ -1,11 +1,20 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useApply } from '../../context/ApplyContext'
+import CandidateHeader from '../../components/CandidateHeader/CandidateHeader'
 import styles from './ThankYou.module.css'
 
 export default function ThankYou() {
   const navigate = useNavigate()
+  const { resetApplication } = useApply()
+
+  useEffect(() => {
+    resetApplication()
+  }, [resetApplication])
 
   return (
     <div className={styles.page}>
+      <CandidateHeader />
       <div className={styles.card}>
         <span className={styles.logoText}>Sofka Tech</span>
 

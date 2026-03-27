@@ -2,17 +2,18 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useApply } from '../../context/ApplyContext'
 import { vacanciesService } from '../../services/vacancies'
+import CandidateHeader from '../../components/CandidateHeader/CandidateHeader'
 import styles from './StepOne.module.css'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function StepOne() {
   const navigate = useNavigate()
-  const { setApplicationData } = useApply()
+  const { applicationData, setApplicationData } = useApply()
 
-  const [fullName, setFullName] = useState('')
-  const [email, setEmail] = useState('')
-  const [vacancyId, setVacancyId] = useState('')
+  const [fullName, setFullName] = useState(applicationData?.full_name || '')
+  const [email, setEmail] = useState(applicationData?.email || '')
+  const [vacancyId, setVacancyId] = useState(applicationData?.vacancy_id || '')
   const [vacancies, setVacancies] = useState([])
   const [loadingVacancies, setLoadingVacancies] = useState(true)
   const [vacanciesError, setVacanciesError] = useState(null)
@@ -46,12 +47,7 @@ export default function StepOne() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <span className={styles.logo}>Sofka Tech</span>
-          <span className={styles.headerTitle}>Prescreening</span>
-        </div>
-      </header>
+      <CandidateHeader />
 
       <main className={styles.main}>
         <div className={styles.card}>

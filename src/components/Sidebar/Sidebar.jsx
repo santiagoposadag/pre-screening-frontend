@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { authService } from '../../services/auth'
 import styles from './Sidebar.module.css'
 
 const menuItems = [
@@ -9,6 +10,13 @@ const menuItems = [
 ]
 
 export default function Sidebar() {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    authService.logout()
+    navigate('/admin/login')
+  }
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.brand}>
@@ -41,6 +49,9 @@ export default function Sidebar() {
           <span>↗</span>
           <span>Portal del candidato</span>
         </a>
+        <button className={styles.logoutBtn} onClick={handleLogout}>
+          Cerrar sesión
+        </button>
       </div>
     </aside>
   )

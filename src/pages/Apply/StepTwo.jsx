@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useApply } from '../../context/ApplyContext'
 import { questionsService } from '../../services/questions'
 import { applicationsService } from '../../services/applications'
+import CandidateHeader from '../../components/CandidateHeader/CandidateHeader'
 import styles from './StepTwo.module.css'
 
 const REC_STATUS = {
@@ -245,7 +246,7 @@ export default function StepTwo() {
   if (loadingQuestions) {
     return (
       <div className={styles.page}>
-        <AppHeader applicationData={applicationData} />
+        <CandidateHeader />
         <main className={styles.main}>
           <p className={styles.statusText}>Cargando preguntas...</p>
         </main>
@@ -256,7 +257,7 @@ export default function StepTwo() {
   if (questionsError) {
     return (
       <div className={styles.page}>
-        <AppHeader applicationData={applicationData} />
+        <CandidateHeader />
         <main className={styles.main}>
           <p className={styles.errorText}>{questionsError}</p>
         </main>
@@ -269,7 +270,7 @@ export default function StepTwo() {
   if (phase === 'summary') {
     return (
       <div className={styles.page}>
-        <AppHeader applicationData={applicationData} />
+        <CandidateHeader />
         <main className={styles.main}>
           <div className={styles.container}>
             <section className={styles.section}>
@@ -434,17 +435,3 @@ export default function StepTwo() {
   )
 }
 
-// ── Shared header subcomponent ─────────────────────────────────────────────────
-function AppHeader({ applicationData }) {
-  return (
-    <header className={styles.header}>
-      <div className={styles.headerInner}>
-        <div className={styles.headerLeft}>
-          <span className={styles.logo}>Sofka</span>
-          <span className={styles.headerTitle}>Prescreening</span>
-        </div>
-        <span className={styles.candidateName}>{applicationData.full_name}</span>
-      </div>
-    </header>
-  )
-}

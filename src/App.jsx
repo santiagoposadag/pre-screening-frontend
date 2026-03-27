@@ -9,6 +9,7 @@ import Vacancies from './pages/Admin/Vacancies/Vacancies'
 import Questions from './pages/Admin/Questions/Questions'
 import Applications from './pages/Admin/Applications/Applications'
 import ApplicationDetail from './pages/Admin/Applications/ApplicationDetail'
+import Login from './pages/Admin/Login/Login'
 
 export default function App() {
   return (
@@ -19,6 +20,9 @@ export default function App() {
           <Route path="/" element={<StepOne />} />
           <Route path="/apply/step2" element={<StepTwo />} />
           <Route path="/apply/thanks" element={<ThankYou />} />
+
+          {/* Admin login */}
+          <Route path="/admin/login" element={<Login />} />
 
           {/* Admin con sidebar */}
           <Route
