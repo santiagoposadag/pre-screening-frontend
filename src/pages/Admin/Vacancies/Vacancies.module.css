@@ -321,3 +321,86 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* ── Detail modal ─────────────────────────────────────────────────────────── */
+
+.modalWide {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 640px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.detailSection {
+  margin-bottom: 1.25rem;
+}
+
+.detailLabel {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.questionsList {
+  padding-left: 1.5rem;
+  list-style: decimal;
+  line-height: 1.7;
+}
+
+.questionItem {
+  margin-bottom: 0.5rem;
+  color: #0f172a;
+  font-size: 0.9rem;
+}
+
+.promptText {
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: #6366f1;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.25rem 0;
+  margin-top: 0.25rem;
+}
+
+.toggleBtn:hover {
+  text-decoration: underline;
+}
+
+.badge {
+  background: #eef2ff;
+  color: #4f46e5;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.btnView {
+  background: none;
+  border: 1px solid #6366f1;
+  color: #6366f1;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+
+.btnView:hover {
+  background: #6366f1;
+  color: #fff;
+}

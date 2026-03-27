@@ -6,7 +6,6 @@ import StepTwo from './pages/Apply/StepTwo'
 import ThankYou from './pages/Apply/ThankYou'
 import Home from './pages/Admin/Home/Home'
 import Vacancies from './pages/Admin/Vacancies/Vacancies'
-import Questions from './pages/Admin/Questions/Questions'
 import Applications from './pages/Admin/Applications/Applications'
 import ApplicationDetail from './pages/Admin/Applications/ApplicationDetail'
 import Login from './pages/Admin/Login/Login'
@@ -47,14 +46,6 @@ export default function App() {
             element={
               <AdminLayout>
                 <Vacancies />
-              </AdminLayout>
-            }
-          />
-          <Route
-            path="/admin/preguntas"
-            element={
-              <AdminLayout>
-                <Questions />
               </AdminLayout>
             }
           />

@@ -15,14 +15,6 @@ const quickActions = [
     bg: '#EEF2FF',
   },
   {
-    to: '/admin/preguntas',
-    icon: '◇',
-    title: 'Preguntas',
-    description: 'Define las preguntas de prescreening asociadas a cada vacante.',
-    color: '#10B981',
-    bg: '#D1FAE5',
-  },
-  {
     to: '/admin/aplicaciones',
     icon: '◉',
     title: 'Aplicaciones',

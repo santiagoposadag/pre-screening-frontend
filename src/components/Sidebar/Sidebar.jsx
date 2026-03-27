@@ -5,7 +5,6 @@ import styles from './Sidebar.module.css'
 const menuItems = [
   { to: '/admin', label: 'Dashboard', icon: '⬡', end: true },
   { to: '/admin/vacantes', label: 'Vacantes', icon: '◈' },
-  { to: '/admin/preguntas', label: 'Preguntas', icon: '◇' },
   { to: '/admin/aplicaciones', label: 'Aplicaciones', icon: '◉' },
 ]
 

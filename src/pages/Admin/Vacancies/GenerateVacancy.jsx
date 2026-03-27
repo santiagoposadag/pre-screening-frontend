@@ -239,7 +239,7 @@ export default function GenerateVacancy() {
             onClick={() => handleStartRegenerate('title')}
             disabled={regenerateLoading}
           >
-            Regenerar título ↻
+            Refinar título ↻
           </button>
         </div>
         <p className={styles.titleText}>{draft.title}</p>
@@ -254,7 +254,7 @@ export default function GenerateVacancy() {
             onClick={() => handleStartRegenerate('questions')}
             disabled={regenerateLoading}
           >
-            Regenerar preguntas ↻
+            Refinar preguntas ↻
           </button>
         </div>
         <span className={styles.badge}>
@@ -276,7 +276,7 @@ export default function GenerateVacancy() {
             onClick={() => handleStartRegenerate('evaluation_prompt')}
             disabled={regenerateLoading}
           >
-            Regenerar prompt ↻
+            Refinar prompt ↻
           </button>
         </div>
         <p className={styles.promptText}>
@@ -293,14 +293,14 @@ export default function GenerateVacancy() {
       {regenerating && (
         <div className={styles.feedbackSection}>
           <p className={styles.feedbackTitle}>
-            Regenerando: {regenerating === 'title' ? 'título' : regenerating === 'questions' ? 'preguntas' : 'prompt de evaluación'}
+            Refinando: {regenerating === 'title' ? 'título' : regenerating === 'questions' ? 'preguntas' : 'prompt de evaluación'}
           </p>
           <textarea
             className={styles.textarea}
             rows={3}
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
-            placeholder="Instrucciones opcionales para la IA (ej: hazlo más técnico, enfoca en liderazgo...)"
+            placeholder="Describe qué cambios quieres (ej: haz la pregunta 3 más técnica, enfoca más en liderazgo, simplifica el lenguaje...)"
             disabled={regenerateLoading}
           />
           <div className={styles.feedbackActions}>
@@ -316,7 +316,7 @@ export default function GenerateVacancy() {
               onClick={handleSubmitRegeneration}
               disabled={regenerateLoading}
             >
-              {regenerateLoading ? 'Regenerando...' : 'Enviar feedback'}
+              {regenerateLoading ? 'Refinando...' : 'Aplicar cambios'}
             </button>
           </div>
         </div>

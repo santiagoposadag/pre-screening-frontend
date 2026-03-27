@@ -20,6 +20,10 @@ export default function Vacancies() {
   const [confirmDeleteId, setConfirmDeleteId] = useState(null)
   const [deleting, setDeleting] = useState(false)
 
+  const [detailVacancy, setDetailVacancy] = useState(null)
+  const [detailLoading, setDetailLoading] = useState(false)
+  const [promptExpanded, setPromptExpanded] = useState(false)
+
   const fetchVacancies = useCallback(async () => {
     setLoading(true)
     setError(null)
@@ -82,6 +86,20 @@ export default function Vacancies() {
     }
   }
 
+  const handleViewDetail = async (vacancyId) => {
+    setDetailLoading(true)
+    setDetailVacancy(null)
+    setPromptExpanded(false)
+    try {
+      const data = await vacanciesService.getById(vacancyId)
+      setDetailVacancy(data)
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Error al cargar detalle de vacante.')
+    } finally {
+      setDetailLoading(false)
+    }
+  }
+
   const handleDelete = async () => {
     if (!confirmDeleteId) return
     setDeleting(true)
@@ -135,6 +153,7 @@ export default function Vacancies() {
                       <td className={styles.td}>{v.name || v.nombre}</td>
                       <td className={styles.tdDesc}>{v.description || <span style={{color:'#9ca3af'}}>—</span>}</td>
                       <td className={styles.tdActions}>
+                        <button className={styles.btnView} onClick={() => handleViewDetail(v.id)}>Ver detalle</button>
                         <button
                           className={styles.btnEdit}
                           onClick={() => openEditModal(v)}
@@ -223,6 +242,68 @@ export default function Vacancies() {
                 {deleting ? 'Eliminando...' : 'Eliminar'}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {(detailVacancy || detailLoading) && (
+        <div className={styles.overlay} onClick={() => { setDetailVacancy(null); setDetailLoading(false) }}>
+          <div className={styles.modalWide} onClick={(e) => e.stopPropagation()}>
+            {detailLoading ? (
+              <p className={styles.statusText}>Cargando detalle...</p>
+            ) : detailVacancy && (
+              <>
+                <h2 className={styles.modalTitle}>{detailVacancy.name}</h2>
+
+                {detailVacancy.description && (
+                  <div className={styles.detailSection}>
+                    <p className={styles.detailLabel}>Descripcion</p>
+                    <p className={styles.promptText}>{detailVacancy.description}</p>
+                  </div>
+                )}
+
+                {detailVacancy.questions_per_interview && (
+                  <div className={styles.detailSection}>
+                    <span className={styles.badge}>{detailVacancy.questions_per_interview} preguntas por entrevista</span>
+                  </div>
+                )}
+
+                <div className={styles.detailSection}>
+                  <p className={styles.detailLabel}>Preguntas ({detailVacancy.questions?.length || 0})</p>
+                  {detailVacancy.questions && detailVacancy.questions.length > 0 ? (
+                    <ol className={styles.questionsList}>
+                      {detailVacancy.questions
+                        .sort((a, b) => a.order - b.order)
+                        .map((q) => (
+                          <li key={q.id} className={styles.questionItem}>{q.text}</li>
+                        ))}
+                    </ol>
+                  ) : (
+                    <p className={styles.statusText}>No hay preguntas vinculadas.</p>
+                  )}
+                </div>
+
+                {detailVacancy.evaluation_prompt && (
+                  <div className={styles.detailSection}>
+                    <p className={styles.detailLabel}>Prompt de evaluacion</p>
+                    <p className={styles.promptText}>
+                      {promptExpanded
+                        ? detailVacancy.evaluation_prompt
+                        : detailVacancy.evaluation_prompt.slice(0, 200) + (detailVacancy.evaluation_prompt.length > 200 ? '...' : '')}
+                    </p>
+                    {detailVacancy.evaluation_prompt.length > 200 && (
+                      <button className={styles.toggleBtn} onClick={() => setPromptExpanded(!promptExpanded)}>
+                        {promptExpanded ? 'Ver menos' : 'Ver mas'}
+                      </button>
+                    )}
+                  </div>
+                )}
+
+                <div className={styles.modalActions}>
+                  <button className={styles.btnCancel} onClick={() => setDetailVacancy(null)}>Cerrar</button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
