@@ -50,7 +50,7 @@ export default function StepTwo() {
       return
     }
     questionsService
-      .getAll(applicationData.vacancy_id)
+      .getInterview(applicationData.vacancy_id)
       .then((data) => {
         setQuestions(data)
         if (data.length === 0) setPhase('summary')
@@ -333,7 +333,7 @@ export default function StepTwo() {
 
   return (
     <div className={styles.page}>
-      <AppHeader applicationData={applicationData} />
+      <CandidateHeader />
       <main className={styles.main}>
         <div className={styles.container}>
           <section className={styles.section}>
