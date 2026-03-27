@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { authService } from '../../services/auth'
+import authService from '../../services/auth'
 import styles from './Sidebar.module.css'
 
 const menuItems = [

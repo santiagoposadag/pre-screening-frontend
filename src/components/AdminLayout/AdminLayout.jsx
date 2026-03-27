@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom'
-import { authService } from '../../services/auth'
+import authService from '../../services/auth'
 import Sidebar from '../Sidebar/Sidebar'
 import styles from './AdminLayout.module.css'
 

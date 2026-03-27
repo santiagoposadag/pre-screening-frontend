@@ -1,24 +1,31 @@
-const STORAGE_KEY = 'admin_auth'
+import api from './api'
 
-const CREDENTIALS = {
-  username: 'admin',
-  password: 'admin123',
-}
+const authService = {
+  async login(email, password) {
+    const params = new URLSearchParams()
+    params.append('username', email)
+    params.append('password', password)
 
-export const authService = {
-  login(username, password) {
-    if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
-      sessionStorage.setItem(STORAGE_KEY, 'true')
-      return { success: true }
-    }
-    return { success: false, error: 'Credenciales incorrectas' }
+    const response = await api.post('/auth/login', params, {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    })
+
+    sessionStorage.setItem('access_token', response.data.access_token)
+    return response.data
   },
 
   logout() {
-    sessionStorage.removeItem(STORAGE_KEY)
+    sessionStorage.removeItem('access_token')
   },
 
   isAuthenticated() {
-    return sessionStorage.getItem(STORAGE_KEY) === 'true'
+    return !!sessionStorage.getItem('access_token')
+  },
+
+  async getCurrentUser() {
+    const response = await api.get('/auth/me')
+    return response.data
   },
 }
+
+export default authService

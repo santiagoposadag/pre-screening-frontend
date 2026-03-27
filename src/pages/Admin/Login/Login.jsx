@@ -1,22 +1,26 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { authService } from '../../../services/auth'
+import authService from '../../../services/auth'
 import styles from './Login.module.css'
 
 export default function Login() {
   const navigate = useNavigate()
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setError(null)
-    const result = authService.login(username, password)
-    if (result.success) {
+    setLoading(true)
+    try {
+      await authService.login(email, password)
       navigate('/admin')
-    } else {
-      setError(result.error)
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Error al iniciar sesión')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -33,14 +37,15 @@ export default function Login() {
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.field}>
-            <label className={styles.label} htmlFor="username">Usuario</label>
+            <label className={styles.label} htmlFor="email">Correo electrónico</label>
             <input
-              id="username"
+              id="email"
               className={styles.input}
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              autoComplete="username"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="admin@sofka.com"
+              autoComplete="email"
               required
             />
           </div>
@@ -60,8 +65,8 @@ export default function Login() {
 
           {error && <p className={styles.error}>{error}</p>}
 
-          <button type="submit" className={styles.btnSubmit}>
-            Ingresar
+          <button type="submit" className={styles.btnSubmit} disabled={loading}>
+            {loading ? 'Ingresando...' : 'Ingresar'}
           </button>
         </form>
       </div>
