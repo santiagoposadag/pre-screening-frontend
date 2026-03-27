@@ -21,7 +21,7 @@ export default function StepOne() {
 
   useEffect(() => {
     vacanciesService
-      .getAll()
+      .getPublic()
       .then((data) => setVacancies(data))
       .catch(() => setVacanciesError('No se pudieron cargar las vacantes'))
       .finally(() => setLoadingVacancies(false))
