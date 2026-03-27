@@ -15,6 +15,7 @@ export default function ThankYou() {
   return (
     <div className={styles.page}>
       <CandidateHeader />
+      <main className={styles.main}>
       <div className={styles.card}>
         <span className={styles.logoText}>Sofka Tech</span>
 
@@ -66,9 +67,10 @@ export default function ThankYou() {
           className={styles.btnSecondary}
           onClick={() => navigate('/')}
         >
-          Aplicar a otra vacante
+          Volver al inicio
         </button>
       </div>
+      </main>
     </div>
   )
 }
