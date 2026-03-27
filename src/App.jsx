@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ApplyProvider } from './context/ApplyContext'
 import AdminLayout from './components/AdminLayout/AdminLayout'
-import StepOne from './pages/Apply/StepOne'
-import StepTwo from './pages/Apply/StepTwo'
+import CandidateLogin from './pages/Apply/CandidateLogin'
+import Invitations from './pages/Apply/Invitations'
+import Interview from './pages/Apply/Interview'
 import ThankYou from './pages/Apply/ThankYou'
 import Home from './pages/Admin/Home/Home'
 import Vacancies from './pages/Admin/Vacancies/Vacancies'
@@ -16,9 +17,10 @@ export default function App() {
     <BrowserRouter>
       <ApplyProvider>
         <Routes>
-          {/* Flujo candidato */}
-          <Route path="/" element={<StepOne />} />
-          <Route path="/apply/step2" element={<StepTwo />} />
+          {/* Flujo candidato (OTP → invitaciones → entrevista) */}
+          <Route path="/" element={<CandidateLogin />} />
+          <Route path="/apply/invitations" element={<Invitations />} />
+          <Route path="/apply/interview" element={<Interview />} />
           <Route path="/apply/thanks" element={<ThankYou />} />
 
           {/* Admin login */}

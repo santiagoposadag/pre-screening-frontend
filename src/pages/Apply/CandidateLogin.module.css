@@ -1,0 +1,159 @@
+.page {
+  min-height: 100vh;
+  background-color: #F8FAFC;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  border: 1px solid #E2E8F0;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 460px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #64748B;
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.input {
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 0.65rem 0.875rem;
+  font-size: 0.95rem;
+  color: #0F172A;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #6366F1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.codeInput {
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0F172A;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 0.5em;
+}
+
+.codeInput:focus {
+  border-color: #6366F1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #94A3B8;
+}
+
+.errorMsg {
+  font-size: 0.85rem;
+  color: #EF4444;
+  margin: 0;
+}
+
+.infoMsg {
+  font-size: 0.85rem;
+  color: #6366F1;
+  background: #EEF2FF;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.btnPrimary {
+  background-color: #6366F1;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, opacity 0.15s;
+  font-family: inherit;
+  width: 100%;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background-color: #4F46E5;
+}
+
+.btnPrimary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btnLink {
+  background: none;
+  border: none;
+  color: #6366F1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5rem;
+  font-family: inherit;
+}
+
+.btnLink:hover {
+  text-decoration: underline;
+}

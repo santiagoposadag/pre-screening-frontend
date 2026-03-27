@@ -1,7 +1,10 @@
 import { createContext, useContext, useState, useCallback } from 'react'
 
 const STORAGE_KEY = 'apply_data'
-const PERSIST_FIELDS = ['full_name', 'email', 'vacancy_id', 'vacancy_name']
+const PERSIST_FIELDS = [
+  'full_name', 'email', 'vacancy_id', 'vacancy_name',
+  'invitation_id', 'application_id', 'questions',
+]
 
 function loadFromStorage() {
   try {
