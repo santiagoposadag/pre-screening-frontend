@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { vacanciesService } from '../../../services/vacancies'
 import styles from './Vacancies.module.css'
 
 const EMPTY_FORM = { name: '', description: '' }
 
 export default function Vacancies() {
+  const navigate = useNavigate()
   const [vacancies, setVacancies] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -99,9 +101,14 @@ export default function Vacancies() {
     <div>
       <div className={styles.pageHeader}>
             <h1 className={styles.pageTitle}>Gestion de Vacantes</h1>
-            <button className={styles.btnPrimary} onClick={openCreateModal}>
-              + Nueva vacante
-            </button>
+            <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <button className={styles.btnEdit} onClick={() => navigate('/admin/vacantes/generar')}>
+                Generar con IA
+              </button>
+              <button className={styles.btnPrimary} onClick={openCreateModal}>
+                + Nueva vacante
+              </button>
+            </div>
           </div>
 
           {error && <p className={styles.errorBanner}>{error}</p>}

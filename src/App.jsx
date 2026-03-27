@@ -10,6 +10,7 @@ import Questions from './pages/Admin/Questions/Questions'
 import Applications from './pages/Admin/Applications/Applications'
 import ApplicationDetail from './pages/Admin/Applications/ApplicationDetail'
 import Login from './pages/Admin/Login/Login'
+import GenerateVacancy from './pages/Admin/Vacancies/GenerateVacancy'
 
 export default function App() {
   return (
@@ -30,6 +31,14 @@ export default function App() {
             element={
               <AdminLayout>
                 <Home />
+              </AdminLayout>
+            }
+          />
+          <Route
+            path="/admin/vacantes/generar"
+            element={
+              <AdminLayout>
+                <GenerateVacancy />
               </AdminLayout>
             }
           />

@@ -8,4 +8,12 @@ export const vacanciesService = {
   update: (id, data) => api.put(`/vacancies/${id}`, data).then((r) => r.data),
 
   delete: (id) => api.delete(`/vacancies/${id}`),
+
+  generateVacancy: (data) => api.post('/vacancies/generate', data).then((r) => r.data),
+
+  regenerateVacancyParts: (threadId, data) =>
+    api.post(`/vacancies/generate/${threadId}/regenerate`, data).then((r) => r.data),
+
+  approveVacancy: (threadId) =>
+    api.post(`/vacancies/generate/${threadId}/approve`).then((r) => r.data),
 }
