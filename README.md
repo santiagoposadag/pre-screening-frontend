@@ -60,19 +60,38 @@ Para producción, configurar `VITE_API_BASE_URL` con la URL del backend desplega
     └── pages/               # Páginas (componen hooks + componentes)
 ```
 
+## Rutas
+
+### Admin
+| Ruta | Descripción |
+|------|-------------|
+| `/admin/login` | Login con JWT |
+| `/admin` | Dashboard |
+| `/admin/vacantes` | Listado de vacantes (con modal de detalle: preguntas, prompt, badge) |
+| `/admin/vacantes/generar` | Generación de vacante con IA (refinamiento iterativo) |
+| `/admin/aplicaciones` | Listado de aplicaciones |
+| `/admin/aplicaciones/:id` | Detalle de aplicación |
+
+### Candidato (público, sin autenticación)
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Paso 1: selección de vacante (`GET /vacancies/public`) |
+| `/apply/step2` | Paso 2: grabación de respuestas (`GET /questions/interview`) |
+| `/apply/thanks` | Confirmación de envío |
+
 ## Flujos de usuario
 
 - **Candidato** (público): Formulario multi-step de postulación (`/` → `/apply/step2` → `/apply/thanks`)
-- **Admin**: Dashboard para gestionar vacantes, preguntas, postulaciones y evaluaciones (`/admin/*`)
+- **Admin**: Dashboard para gestionar vacantes, postulaciones y evaluaciones (`/admin/*`)
 
 ## Arquitectura
 
 ### Autenticación
-1. Usuario se registra o inicia sesión
+1. Admin inicia sesión via `POST /api/v1/auth/login` (form-encoded)
 2. Backend retorna JWT token
-3. Token se almacena en `localStorage`
+3. Token se almacena en `sessionStorage`
 4. Cada petición incluye `Authorization: Bearer {token}` (interceptor Axios)
-5. Si token expira (401), se limpia y redirige a /login
+5. Si token expira (401), se limpia y redirige a `/admin/login`
 
 ### Capas
 - **services/**: Llamadas HTTP via Axios (`api.js` base + servicios por módulo)

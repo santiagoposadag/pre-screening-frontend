@@ -29,10 +29,24 @@ services/ → hooks/ → components/ → pages/ → App.jsx
 
 **Styling**: CSS Modules only (`.module.css` per component). No global CSS classes, no Tailwind, no CSS-in-JS.
 
+## Authentication
+
+JWT-based. Login via `POST /api/v1/auth/login` (form-encoded). Token stored in `sessionStorage`. Axios interceptor in `api.js` auto-attaches `Bearer` token to all requests and handles 401 by clearing token and redirecting to `/admin/login` (only on `/admin/*` paths — candidate flow is unaffected).
+
+## Routes
+
+**Admin** (protected): `/admin/login`, `/admin`, `/admin/vacantes`, `/admin/vacantes/generar`, `/admin/aplicaciones`, `/admin/aplicaciones/:id`
+
+**Candidate** (public, no auth): `/`, `/apply/step2`, `/apply/thanks`
+
 ## User Flows
 
-- **Candidate flow** (public): multi-step application form (`/` → `/apply/step2` → `/apply/thanks`)
-- **Admin flow**: dashboard to manage vacancies, questions, applications, and evaluations (`/admin/*`)
+- **Candidate flow** (public): multi-step application form (`/` → `/apply/step2` → `/apply/thanks`). StepOne fetches vacancies from `GET /vacancies/public`; StepTwo fetches questions from `GET /questions/interview`.
+- **Admin flow**: dashboard to manage vacancies, applications, and evaluations (`/admin/*`). Questions are viewed per-vacancy via the detail modal (no standalone questions page).
+
+## AI Vacancy Generation
+
+Route: `/admin/vacantes/generar`. Two-phase flow: (1) admin provides job description, (2) AI generates title + questions + evaluation prompt. Admin can iteratively refine ("Refinar") specific parts with feedback before approving. Uses LangGraph stateful workflow on the backend with `thread_id` for session continuity.
 
 ## Key Environment Variables (`.env`)
 
