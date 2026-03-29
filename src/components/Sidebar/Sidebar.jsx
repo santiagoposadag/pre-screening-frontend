@@ -6,6 +6,7 @@ const menuItems = [
   { to: '/admin', label: 'Dashboard', icon: '⬡', end: true },
   { to: '/admin/vacantes', label: 'Vacantes', icon: '◈' },
   { to: '/admin/aplicaciones', label: 'Aplicaciones', icon: '◉' },
+  { to: '/admin/formaciones', label: 'Formaciones', icon: '◆' },
 ]
 
 export default function Sidebar() {
